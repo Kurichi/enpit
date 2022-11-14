@@ -13,17 +13,17 @@ model_name = 'cl-tohoku/bert-base-japanese-whole-word-masking'
 tokenizer = BertJapaneseTokenizer.from_pretrained(model_name)
 bert_model = BertForMaskedLM.from_pretrained(model_name)
 
-bert_model = bert_model.cuda() # GPU上で使えるように変換
+# bert_model = bert_model.cuda() # GPU上で使えるように変換
 
 # text = '『神戸のデータ活用塾！KDL Data Blog』では[MASK]についての記事を発信しています。是非、一度ご覧ください。'
-text = '２００６年７月５日、名古屋市内の６７歳の男性方の土蔵から、棟方志功作品と思われる版画など、骨董品３００点が盗難に[MASK]。'
+text = 'こんにちは、私は[MASK]モデルです。'
 
 # 形態素に分割
 tokens = tokenizer.tokenize(text)
 
 # 形態素を対応するIDに変換
 input_ids = tokenizer.encode(text, return_tensors='pt')
-input_ids = input_ids.cuda() # GPU上で使えるように変換
+# input_ids = input_ids.cuda() # GPU上で使えるように変換
 
 
 # モデルの出力を得る

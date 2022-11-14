@@ -17,6 +17,7 @@ class BertProofreader:
 
         # Load pre-trained model (weights)
         self.model = BertForMaskedLM.from_pretrained(pretrained_model, cache_dir=cache_dir)
+        # self.tokenizer.to('cpu')
         self.model.to('cuda')
 
         self.model.eval()
